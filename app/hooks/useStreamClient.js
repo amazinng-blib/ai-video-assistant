@@ -1,4 +1,4 @@
-import { StreamVideoClient } from '@stream-io/node-sdk';
+import { StreamVideoClient } from '@stream-io/video-react-sdk';
 import { useEffect, useState } from 'react';
 import { StreamChat } from 'stream-chat';
 
@@ -36,8 +36,8 @@ export function useStreamClient({ apiKey, user, token }) {
 
     return () => {
       isMounted = false;
-      if (videoClient) videoClient.disconnect().catch(console.error);
-      if (chatClient) chatClient.disconnect().catch(console.error);
+      if (videoClient) videoClient?.disconnect().catch(console.error);
+      if (chatClient) chatClient?.disconnect().catch(console.error);
     };
   }, [apiKey, user, token]);
 

@@ -3,6 +3,7 @@ import StreamProvider from '@/app/components/stream-provider';
 import { StreamTheme } from '@stream-io/video-react-sdk';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import MeetingRoom from '../../components/Meeting-room';
 
 const MeetingPage = () => {
   const searchparams = useSearchParams();
@@ -15,6 +16,10 @@ const MeetingPage = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [error, setError] = useState(null);
+
+  const handleOnLeave = () => {
+    router.push('/');
+  };
 
   useEffect(() => {
     setUser({
@@ -72,7 +77,9 @@ const MeetingPage = () => {
 
   return (
     <StreamProvider user={user} token={token}>
-      <StreamTheme>Meeting Room</StreamTheme>
+      <StreamTheme>
+        <MeetingRoom callId={callId} userId={user.id} onLeave={handleOnLeave} />
+      </StreamTheme>
     </StreamProvider>
   );
 };

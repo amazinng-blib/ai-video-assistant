@@ -1,7 +1,6 @@
 import { StreamVideo } from '@stream-io/video-react-sdk';
 import { useStreamClient } from '../hooks/useStreamClient';
 import { Chat } from 'stream-chat-react';
-// import '@stream-io/video-react-sdk/dist/css/styles.css';
 
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 export default function StreamProvider({ children, user, token }) {

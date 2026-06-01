@@ -25,11 +25,13 @@ export async function POST(request) {
 
     await serverClient.upsertUsers([newUser]);
 
-    const now = Date.now();
-    const validity = now + 24 * 60 * 60 * 1000; // 1 day
+    const now = Math.floor(Date.now() / 1000); // current time in seconds
+
+    const validity = now + 24 * 60 * 60; // 1 day
     const token = serverClient.generateUserToken({
       user_id: userId,
       validity_in_seconds: validity,
+      lat: now - 60, // 1 minute ago
       //   role: 'admin',
     });
 
